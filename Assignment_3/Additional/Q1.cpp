@@ -1,42 +1,43 @@
 #include <iostream>
-#include <vector>
 #include <stack>
 using namespace std;
-vector<int> smallest(vector<int> &A)
+void ans(int arr[], int res[], int n)
 {
     stack<int> s;
-    vector<int> res;
-    for (int i = 0; i < A.size(); i++)
+
+    for (int i = 0; i < n; i++)
     {
-        while (!s.empty() && s.top() >= A[i])
+        while (!s.empty() && s.top() >= arr[i])
         {
             s.pop();
         }
+
         if (s.empty())
         {
-            res.push_back(-1);
+            res[i] = -1;
         }
         else
         {
-            res.push_back(s.top());
+            res[i] = s.top();
         }
-        s.push(A[i]);
-    }
 
-    return res;
+        s.push(arr[i]);
+    }
 }
 
 int main()
 {
-    vector<int> A = {4, 5, 2, 10, 8};
-    vector<int> res = smallest(A);
+    int arr[] = {4, 5, 2, 10, 8};
+    int size = sizeof(arr) / sizeof(arr[0]);
+    int res[size];
+
+    ans(arr, res, size);
 
     cout << "Nearest smaller to left: ";
-    for (int i = 0; i < res.size(); i++)
+    for (int i = 0; i < size; i++)
     {
         cout << res[i] << " ";
     }
-
     cout << endl;
 
     return 0;
