@@ -75,7 +75,6 @@ int main()
     head->next->next->next->next = new Node(5);
 
     head->next->next->next->next->next = head->next->next;
-
     removeLoop(head);
     printList(head);
 
