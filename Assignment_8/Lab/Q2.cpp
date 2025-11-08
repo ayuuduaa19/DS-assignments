@@ -153,6 +153,7 @@ Node *inorderpredecessor(Node *root, int key)
 }
 int main()
 {
+    int key1, key2;
     Node *root = build(root);
     search(root, 10);
     cout << "printing inorder:";
@@ -163,8 +164,12 @@ int main()
     cout << "\nMIN ELEMENT OF BST IS:";
     Node *temp2 = min(root);
     cout << temp2->data << endl;
-    Node *inordersuc = inorderSuccessor(root, 9);
-    Node *inorderpre = inorderpredecessor(root, 10);
-    cout << "inorder successor of 9 is:" << inordersuc->data << endl;
-    cout << "inorder predecessor of 10 is:" << inorderpre->data;
+    cout << "enter key for successor:";
+    cin >> key1;
+    Node *inordersuc = inorderSuccessor(root, key1);
+    cout << "enter key for predecessor:";
+    cin >> key2;
+    Node *inorderpre = inorderpredecessor(root, key2);
+    cout << "inorder successor of" << key1 << "is:" << inordersuc->data << endl;
+    cout << "inorder predecessor of" << key2 << "is:" << inorderpre->data;
 }
